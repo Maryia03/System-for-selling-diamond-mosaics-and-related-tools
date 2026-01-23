@@ -1,1 +1,1 @@
-# System that allows to buy and sell diamond mosaics and tools for them
+# System for selling diamond mosaics and related tools
