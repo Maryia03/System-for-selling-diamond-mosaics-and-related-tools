@@ -13,13 +13,12 @@ const Header = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const handleLoginModalClose = () => setShowLoginModal(false);
     const handleLoginModalShow = () => setShowLoginModal(true);
-
     const handleLogout = () => {
         logout();
         navigate('/home');
     };
 
-    return (
+    return(
         <Navbar collapseOnSelect expand="md" bg="light" variant="light" className="no-padding">
             <Container fluid className="no-padding">
                 <Navbar.Brand as={Link} to="/home" className="logo-container">
@@ -40,20 +39,15 @@ const Header = () => {
                             </>
                         ) : (
                             <>
-
-                                {/* Link to the administration panel if the user is an administrator */}
                                 {Cookies.get('admin') == "1" && (
                                     <Nav.Link as={Link} to="/admin">Administrator Panel</Nav.Link>
                                 )}
-
                                 <Nav.Link as={Link} to="/" onClick={handleLogout}>Log out</Nav.Link>
                             </>
                         )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-
-            {/* Login modal */}
             <Modal show={showLoginModal} onHide={handleLoginModalClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Login</Modal.Title>

@@ -9,13 +9,12 @@ import pl.pollub.mosaic.Models.Tools;
 import pl.pollub.mosaic.Services.ToolService;
 import pl.pollub.mosaic.Repositories.ToolRepository;
 import pl.pollub.mosaic.Models.DTO.ToolRequest;
-
 import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/tool")
 @CrossOrigin
-public class ToolController {
+public class ToolController{
     @Autowired
     private ToolService toolService;
 
@@ -23,7 +22,7 @@ public class ToolController {
     public @ResponseBody String addTool(HttpServletRequest request,@RequestBody ToolRequest toolRequest) {
         try {
             return toolService.addTool(request,toolRequest);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e){
             return e.getMessage();
         }
     }
@@ -37,20 +36,20 @@ public class ToolController {
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public @ResponseBody String deleteTool(@PathVariable int id) {
+    public @ResponseBody String deleteTool(@PathVariable int id){
         try {
             return toolService.deleteTool(id);
-        } catch (EntityNotFoundException e) {
+        } catch (EntityNotFoundException e){
             return e.getMessage();
         }
     }
 
     @PatchMapping(path = "/update/{id}")
-    public @ResponseBody String updateTool(@PathVariable int id, @RequestBody ToolRequest updatedToolRequest) {
-        try {
+    public @ResponseBody String updateTool(@PathVariable int id, @RequestBody ToolRequest updatedToolRequest){
+        try{
             Tools updatedTool = toolService.updateTool(id, updatedToolRequest);
             return "Tool updated: " + updatedTool.getName();
-        } catch (EntityNotFoundException e) {
+        } catch (EntityNotFoundException e){
             return e.getMessage();
         }
     }

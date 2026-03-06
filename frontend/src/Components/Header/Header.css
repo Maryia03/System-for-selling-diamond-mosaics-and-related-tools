@@ -43,6 +43,15 @@
     display: flex;
 }
 
+.navbar-nav a {
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.navbar-nav a:hover {
+    color: #4f46e5 !important;
+}
+
 .navbar-nav .nav-link {
     font-size: 1.25rem;
     color: #333;

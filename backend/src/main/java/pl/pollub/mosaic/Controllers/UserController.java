@@ -21,14 +21,13 @@ import pl.pollub.mosaic.Models.Role;
 import pl.pollub.mosaic.Repositories.UserRepository;
 import pl.pollub.mosaic.Models.Users;
 import pl.pollub.mosaic.Services.JwtService;
-
 import java.util.Optional;
 import java.util.SimpleTimeZone;
 
 @Controller
 @RequestMapping(path = "/user")
 @CrossOrigin
-public class UserController {
+public class UserController{
     @Autowired
     private UserRepository userRepository;
     private PasswordEncoder encoder;
@@ -71,7 +70,7 @@ public class UserController {
     }
 
     @GetMapping("/block/{id}")
-    public @ResponseBody String blockUser(@PathVariable int id) {
+    public @ResponseBody String blockUser(@PathVariable int id){
         Optional<Users> u = userRepository.findById(id);
         if (u.isPresent()) {
             u.get().setAcive(!u.get().isAcive());

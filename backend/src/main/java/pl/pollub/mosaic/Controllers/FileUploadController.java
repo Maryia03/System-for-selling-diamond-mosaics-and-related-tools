@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -39,7 +38,7 @@ public class FileUploadController {
             )
             @RequestParam("file") MultipartFile file
     ) {
-        try {
+        try{
             String filename = file.getOriginalFilename();
             if (filename == null || !(filename.toLowerCase().endsWith(".jpg") || filename.toLowerCase().endsWith(".jpeg"))) {
                 return ResponseEntity.badRequest().body("Only JPG files are allowed.");
@@ -54,11 +53,9 @@ public class FileUploadController {
             }
 
             Files.createDirectories(Paths.get(UPLOAD_DIR));
-
             String uniqueFilename = System.currentTimeMillis() + "_" + filename;
             Path path = Paths.get(UPLOAD_DIR + uniqueFilename);
             Files.write(path, file.getBytes());
-
             String fileUrl = "http://localhost:8080/files/" + uniqueFilename;
             return ResponseEntity.ok(fileUrl);
 

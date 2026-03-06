@@ -8,14 +8,13 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.List;
 import jakarta.persistence.ManyToMany;
-
 import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 @Getter@Setter
 @Entity
-public class Orders {
-@Id
+public class Orders{
+    @Id
     @GeneratedValue
     private int Id;
     @Setter

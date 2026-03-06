@@ -7,19 +7,17 @@ import { AuthContext } from '../../Context/AuthContext';
 const AdminHeader = () => {
     const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
-
     const handleLogout = () => {
         logout();
         navigate('/home');
     };
 
-    return (
+    return(
         <Navbar fixed="top" collapseOnSelect expand="md" bg="light" variant="light" className="navbar">
             <Container>
                 <Navbar.Brand as={Link} to="/admin" className="logo-container">
                     Panel Administratora
                 </Navbar.Brand>
-
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                     <Nav className="navbar-nav">

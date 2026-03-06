@@ -74,6 +74,7 @@ const AppContent = () => {
                                 : <MosaicList mosaics={mosaicsData} />
                         }
                     />
+                    <Route path="/" element={<MosaicList mosaics={mosaicsData} />} />
                     <Route path="/login" element={Cookies.get('user_id') ? <Navigate to="/" /> : <LogIn />} />
                     <Route path="/register" element={Cookies.get('user_id') ? <Navigate to="/" /> : <Register />} />
                     <Route path="/mosaics/:id" element={<MosaicDetails />} />
@@ -110,11 +111,9 @@ const AppContent = () => {
     );
 };
 
-
 const App = () => (
     <Router>
         <AppContent />
     </Router>
 );
-
 export default App;

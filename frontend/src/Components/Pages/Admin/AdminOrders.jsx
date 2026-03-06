@@ -27,8 +27,7 @@ const AdminOrders = () => {
     const updateStatus = (orderId) => {
         const newStatus = statusUpdates[orderId];
         if (!newStatus) return;
-
-        axios.patch(`http://localhost:8080/orders/updateStatus/${orderId}`, null, {
+        axios.patch(`http://localhost:8080/orders/updateStatus/${orderId}`, null,{
             params: { newStatus },
             headers: { 'Authorization': `Bearer ${Cookies.get("user_key")}` }
         })
@@ -42,11 +41,10 @@ const AdminOrders = () => {
             });
     };
 
-    return (
+    return(
         <div className="orders-page" style={{ marginTop: '80px' }}>
             <h2>All Orders</h2>
             <hr />
-
             {orders.length === 0 ? (
                 <p>No orders</p>
             ) : (
@@ -67,8 +65,6 @@ const AdminOrders = () => {
                                 ))}
                             </div>
                         )}
-
-                        {/* Tools only if exist */}
                         {order.tools && order.tools.length > 0 && (
                             <div>
                                 <h5>Tools:</h5>
@@ -79,11 +75,8 @@ const AdminOrders = () => {
                                 ))}
                             </div>
                         )}
-
-                        {/* Change order status */}
                         <div className="admin-status-control">
                             <label htmlFor={`status-${order.id}`}>Zmień status:</label>
-
                             <select
                                 id={`status-${order.id}`}
                                 value={statusUpdates[order.id] || ''}
@@ -93,7 +86,6 @@ const AdminOrders = () => {
                                 {order.orderStatus === 'PAID' && <option value="PENDING">PENDING</option>}
                                 {order.orderStatus === 'PENDING' && <option value="DELIVERED">DELIVERED</option>}
                             </select>
-
                             <button
                                 onClick={() => updateStatus(order.id)}
                                 disabled={!statusUpdates[order.id]}

@@ -6,13 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.*;
-
 import java.util.List;
 
 @Getter
 @Entity
 @RequiredArgsConstructor
-public class Users {
+public class Users{
     @Id
     @GeneratedValue
     private Integer id;
@@ -34,7 +33,7 @@ public class Users {
     @OneToMany
     List<Orders> ordersList;
 
-    public Users(Users users) {
+    public Users(Users users){
         this.id = users.getId();
         this.name = users.getName();
         this.email = users.getEmail();
@@ -43,7 +42,7 @@ public class Users {
         this.ordersList = users.getOrdersList();
     }
 
-    public Users() {
+    public Users(){
     }
 
 }

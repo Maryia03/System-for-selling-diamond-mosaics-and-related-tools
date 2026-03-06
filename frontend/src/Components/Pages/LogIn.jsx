@@ -14,11 +14,10 @@ const LogIn = ({ handleClose }) => {
     useEffect(() => {
         if (Cookies.get("user_key")) {
             handleClose();
-            //If the user is an administrator, redirect to the admin panel
             if (Cookies.get('admin') == "1") {
                 navigate('/admin');  
             } else {
-                navigate('/'); //Otherwise, redirect to the home page
+                navigate('/');
             }
         }
     }, [ navigate, handleClose, refresh]);
@@ -36,7 +35,6 @@ const LogIn = ({ handleClose }) => {
     return (
         <div className="login-container">
             <hr className="divider" />
-            <h2>Login</h2>
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">

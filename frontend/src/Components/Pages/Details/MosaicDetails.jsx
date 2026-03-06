@@ -10,10 +10,8 @@ const MosaicDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { id } = useParams();
-
     const mosaicFromState = location.state?.mosaic;
     const [mosaic, setMosaic] = useState(mosaicFromState);
-
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [status, setStatus] = useState('');
 
@@ -24,7 +22,7 @@ const MosaicDetails = () => {
         }
     }, [id, mosaics, mosaicFromState]);
 
-    if (!mosaic) {
+    if (!mosaic){
         return <p>No mosaic found. Please return to the list.</p>;
     }
 
@@ -42,12 +40,11 @@ const MosaicDetails = () => {
             image: mosaic.imageLink,
             type: 'mosaic'
         });
-
         setStatus('Added to cart!');
         setTimeout(() => setStatus(''), 3000);
     };
 
-    return (
+    return(
         <div className="mosaic-details">
             <Modal show={showLoginModal} onHide={() => setShowLoginModal(false)} centered>
                 <Modal.Header closeButton>

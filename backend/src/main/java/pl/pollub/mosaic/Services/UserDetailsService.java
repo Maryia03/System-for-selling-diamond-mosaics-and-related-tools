@@ -9,12 +9,11 @@ import pl.pollub.mosaic.Repositories.UserRepository;
 
 @Service
 @RequiredArgsConstructor
-public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService{
     private final UserRepository userRepository;
 
-
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
         return userRepository.findByEmail(email)
                 .map(users -> User.builder()
                         .username(users.getEmail())

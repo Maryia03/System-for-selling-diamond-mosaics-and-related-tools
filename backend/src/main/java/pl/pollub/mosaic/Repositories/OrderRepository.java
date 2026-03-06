@@ -6,7 +6,7 @@ import pl.pollub.mosaic.Models.Orders;
 import pl.pollub.mosaic.Models.Users;
 import java.util.List;
 
-public interface OrderRepository extends CrudRepository<Orders, Integer> {
+public interface OrderRepository extends CrudRepository<Orders, Integer>{
     List<Orders> findByUser(Users user);
 
 }

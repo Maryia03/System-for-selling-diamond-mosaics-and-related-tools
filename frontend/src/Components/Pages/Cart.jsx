@@ -26,14 +26,10 @@ const Cart = () => {
         );
     }
 
-
-
     const handleCheckout = async () => {
         if (!currentUser) return;
-
         const mosaicIds = cart.filter(item => item.type === 'mosaic').map(item => item.id);
         const toolIds = cart.filter(item => item.type === 'tool').map(item => item.id);
-
         try {
             const config = {
                 headers: {
@@ -46,19 +42,16 @@ const Cart = () => {
             params.append('userId', currentUser.id);
             mosaicIds.forEach(id => params.append('mosaicIds', id));
             toolIds.forEach(id => params.append('toolIds', id));
-
             const response = await axios.post('http://localhost:8080/orders/addOrder', params, config);
             alert(response.data);
-
             cart.forEach(item => deleteFromCart(item.id));
-
         } catch (err) {
             console.error('Error while placing an order:', err);
             alert('The order could not be placed.');
         }
     };
 
-    return (
+    return(
         <div className="cart-container" style={{ marginTop: '80px' }}>
             <div className="cart-header">
                 <h2>My Cart</h2>

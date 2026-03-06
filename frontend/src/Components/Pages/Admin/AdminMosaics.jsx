@@ -9,7 +9,6 @@ const AdminMosaics = () => {
     const [showForm, setShowForm] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const [editImageFile, setEditImageFile] = useState(null);
-
     const [newMosaic, setNewMosaic] = useState({
         name: '',
         description: '',
@@ -42,14 +41,12 @@ const AdminMosaics = () => {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
-        if (!file.type.startsWith("image/")) {
+        if (!file.type.startsWith("image/")){
             alert("The file must be an image!");
             e.target.value = "";
             return;
         }
-
-        if (file.size > 5 * 1024 * 1024) {
+        if (file.size > 5 * 1024 * 1024){
             alert("The image is too large! The maximum size is 5 MB.");
             e.target.value = "";
             return;
@@ -57,11 +54,11 @@ const AdminMosaics = () => {
 
         const img = new Image();
         img.onload = () => {
-            if (img.width > 850 || img.height > 600) {
+            if (img.width > 850 || img.height > 600){
                 alert("The image is too big.The maximum size is 850x600.");
                 e.target.value = "";
             } else {
-                setImageFile(file); // OK
+                setImageFile(file);
             }
         };
         img.src = URL.createObjectURL(file);
@@ -70,19 +67,16 @@ const AdminMosaics = () => {
     const handleEditFileChange = (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
-        if (!file.type.startsWith("image/")) {
+        if (!file.type.startsWith("image/")){
             alert("The file must be an image!");
             e.target.value = "";
             return;
         }
-
-        if (file.size > 5 * 1024 * 1024) {
+        if (file.size > 5 * 1024 * 1024){
             alert("The image is too large! The maximum size is 5 MB.");
             e.target.value = "";
             return;
         }
-
         const img = new Image();
         img.onload = () => {
             if (img.width > 850 || img.height > 600) {
@@ -107,14 +101,12 @@ const AdminMosaics = () => {
             method: 'POST',
             body: formData
         });
-
-        if (!uploadRes.ok) {
+        if (!uploadRes.ok){
             alert('Image transfer error.');
             return;
         }
 
         const imageUrl = await uploadRes.text();
-
         await addMosaic({ ...newMosaic, price: parseFloat(price), imageLink: imageUrl});
         setNewMosaic({ name: '', description: '', size: '', price: '' });
         setImageFile(null);
@@ -142,26 +134,23 @@ const AdminMosaics = () => {
 
     const saveEdit = async () => {
         const { id, name, description, size, price } = editingMosaic;
-        if (!name || !description || !size || !price) {
+        if (!name || !description || !size || !price){
             alert("All fields are required.");
             return;
         }
 
         let imageLink = editingMosaic.imageLink;
-        if (editImageFile) {
+        if (editImageFile){
             const formData = new FormData();
             formData.append('file', editImageFile);
-
-            const uploadRes = await fetch('http://localhost:8080/upload', {
+            const uploadRes = await fetch('http://localhost:8080/upload',{
                 method: 'POST',
                 body: formData
             });
-
-            if (!uploadRes.ok) {
+            if (!uploadRes.ok){
                 alert('Error uploading new image.');
                 return;
             }
-
             imageLink = await uploadRes.text();
         }
 
@@ -171,7 +160,7 @@ const AdminMosaics = () => {
         fetchMosaics();
     };
 
-    return (
+    return(
         <div className="admin-mosaics-container">
             <h2>Mosaic management</h2>
             <button onClick={() => setShowForm(!showForm)} className="toggle-form-button">

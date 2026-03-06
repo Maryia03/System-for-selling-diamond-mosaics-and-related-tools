@@ -23,7 +23,7 @@ import pl.pollub.mosaic.Repositories.UserRepository;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class AuthService{
     private final UserRepository userRepository;
     @Autowired
     private final AuthenticationManager authenticationManager;

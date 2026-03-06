@@ -6,7 +6,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminTools from "./AdminTools";
 
 const AdminPage = () => {
-    return (
+    return(
         <div>
             <h1>Administrator Panel</h1>
             <Routes>

@@ -9,13 +9,11 @@ const AdminTools = () => {
     const [showForm, setShowForm] = useState(false);
     const [imageFile, setImageFile] = useState(null);
     const [editImageFile, setEditImageFile] = useState(null);
-
     const [newTool, setNewTool] = useState({
         name: '',
         description: '',
         price: ''
     });
-
     const [editModal, setEditModal] = useState(false);
     const [editingTool, setEditingTool] = useState(null);
 
@@ -41,13 +39,11 @@ const AdminTools = () => {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
         if (!file.type.startsWith("image/")) {
             alert("The file must be an image!");
             e.target.value = "";
             return;
         }
-
         if (file.size > 5 * 1024 * 1024) {
             alert("The image is too large! The maximum size is 5 MB.");
             e.target.value = "";
@@ -69,14 +65,12 @@ const AdminTools = () => {
     const handleEditFileChange = (e) => {
         const file = e.target.files[0];
         if (!file) return;
-
-        if (!file.type.startsWith("image/")) {
+        if (!file.type.startsWith("image/")){
             alert("The file must be an image!");
             e.target.value = "";
             return;
         }
-
-        if (file.size > 5 * 1024 * 1024) {
+        if (file.size > 5 * 1024 * 1024){
             alert("The image is too large! The maximum size is 5 MB.");
             e.target.value = "";
             return;
@@ -84,7 +78,7 @@ const AdminTools = () => {
 
         const img = new Image();
         img.onload = () => {
-            if (img.width > 850 || img.height > 600) {
+            if (img.width > 850 || img.height > 600){
                 alert("The image is too big.The maximum size is 850x600.");
                 e.target.value = "";
             } else {
@@ -96,26 +90,23 @@ const AdminTools = () => {
 
     const handleAdd = async () => {
         const { name, description, price } = newTool;
-        if (!name || !description || !price || !imageFile) {
+        if (!name || !description || !price || !imageFile){
             alert("All fields are required.");
             return;
         }
 
         const formData = new FormData();
         formData.append('file', imageFile);
-
-        const uploadRes = await fetch('http://localhost:8080/upload', {
+        const uploadRes = await fetch('http://localhost:8080/upload',{
             method: 'POST',
             body: formData
         });
-
-        if (!uploadRes.ok) {
+        if (!uploadRes.ok){
             alert('Image transfer error.');
             return;
         }
 
         const imageUrl = await uploadRes.text();
-
         await addTool({ ...newTool, price: parseFloat(price), imageLink: imageUrl });
         setNewTool({ name: '', description: '', price: '' });
         setImageFile(null);
@@ -124,7 +115,7 @@ const AdminTools = () => {
     };
 
     const handleDelete = async (id) => {
-        if (window.confirm("Are you sure you want to remove this tool?")) {
+        if (window.confirm("Are you sure you want to remove this tool?")){
             await deleteTool(id);
             fetchTools();
         }
@@ -143,26 +134,24 @@ const AdminTools = () => {
 
     const saveEdit = async () => {
         const { id, name, description, price } = editingTool;
-        if (!name || !description || !price) {
+        if (!name || !description || !price){
             alert("All fields are required.");
             return;
         }
 
         let imageLink = editingTool.imageLink;
-        if (editImageFile) {
+        if (editImageFile){
             const formData = new FormData();
             formData.append('file', editImageFile);
-
-            const uploadRes = await fetch('http://localhost:8080/upload', {
+            const uploadRes = await fetch('http://localhost:8080/upload',{
                 method: 'POST',
                 body: formData
             });
 
-            if (!uploadRes.ok) {
+            if (!uploadRes.ok){
                 alert('Error uploading new image.');
                 return;
             }
-
             imageLink = await uploadRes.text();
         }
 
@@ -172,7 +161,7 @@ const AdminTools = () => {
         fetchTools();
     };
 
-    return (
+    return(
         <div className="admin-tools-container">
             <h2>Tool management</h2>
 

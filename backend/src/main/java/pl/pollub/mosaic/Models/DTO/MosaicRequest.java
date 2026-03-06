@@ -4,10 +4,10 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import pl.pollub.mosaic.Models.*;
-
 import java.util.List;
+
 @Getter@Setter
-public class MosaicRequest {
+public class MosaicRequest{
         private String name;
         private String Description;
         private String imageLink;

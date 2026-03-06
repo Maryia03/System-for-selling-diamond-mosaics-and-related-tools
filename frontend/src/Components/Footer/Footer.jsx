@@ -10,7 +10,6 @@ const Footer = () => {
                 <p>Email: mosaicapl@gmail.com</p>
             </div>
             <div className="separator"></div>
-
             <div className="column">
                 <h2>Warsaw Office</h2>
                 <p>36A Krakowska Street</p>

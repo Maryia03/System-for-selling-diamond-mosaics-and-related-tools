@@ -15,7 +15,6 @@ const AdminUsers = () => {
             console.log(userList);
             setUsers(userList);
         };
-
         fetchUsers();
     }, [getAllUsers,refresh]);
 

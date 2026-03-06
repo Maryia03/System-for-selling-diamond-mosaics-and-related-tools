@@ -10,10 +10,8 @@ const ToolDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { id } = useParams();
-
     const toolFromState = location.state?.tool;
     const [tool, setTool] = useState(toolFromState);
-
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [status, setStatus] = useState('');
 
@@ -23,8 +21,7 @@ const ToolDetails = () => {
             setTool(found);
         }
     }, [id, tools, toolFromState]);
-
-    if (!tool) {
+    if (!tool){
         return <p>No tool found. Please return to the list.</p>;
     }
 
@@ -41,12 +38,11 @@ const ToolDetails = () => {
             image: tool.imageLink,
             type: 'tool'
         });
-
         setStatus('Added to cart!');
         setTimeout(() => setStatus(''), 3000);
     };
 
-    return (
+    return(
         <div className="tool-details">
             <Modal show={showLoginModal} onHide={() => setShowLoginModal(false)} centered>
                 <Modal.Header closeButton>

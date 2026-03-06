@@ -1,127 +1,107 @@
 .admin-tools-container {
-    padding: 2rem;
     max-width: 1200px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
+    margin: 100px auto;
+    padding: 20px;
+    text-align: center;
 }
 
 .admin-tools-container h2 {
-    text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .toggle-form-button {
-    display: block;
-    margin: 0 auto 1rem auto;
-    padding: 10px 20px;
-    background-color: #007bff;
+    background: #4f46e5;
     color: white;
     border: none;
-    border-radius: 6px;
+    padding: 10px 18px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
+    margin-bottom: 20px;
+    transition: 0.3s;
 }
 
 .toggle-form-button:hover {
-    background-color: #0056b3;
+    background: #3730a3;
 }
 
 .admin-form {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-.admin-form input {
+.admin-form input,
+.admin-form select {
     padding: 10px;
-    font-size: 16px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
 }
 
 .admin-form button {
-    width: fit-content;
-    padding: 10px 20px;
-    background-color: #28a745;
+    background: #10b981;
     color: white;
     border: none;
+    padding: 10px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 .admin-form button:hover {
-    background-color: #218838;
+    background: #059669;
 }
 
-.tool-grid.admin {
+.tool-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
 }
 
 .tool-card {
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    background: white;
+    border-radius: 12px;
     padding: 15px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
 }
 
 .tool-card img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
 .tool-card h4 {
-    font-size: 18px;
-    margin: 0.5rem 0;
-}
-
-.tool-card p {
-    margin: 0.25rem 0;
-    font-size: 14px;
+    margin: 8px 0;
 }
 
 .tool-card button {
-    margin-top: 10px;
-    padding: 6px 12px;
+    margin: 5px;
+    padding: 7px 12px;
+    border-radius: 6px;
     border: none;
-    border-radius: 5px;
-    font-size: 14px;
     cursor: pointer;
 }
 
-.tool-card button:first-of-type {
-    background-color: #ffc107;
-    color: black;
+.tool-card button:first-child {
+    background: #3b82f6;
+    color: white;
 }
 
-.tool-card button:first-of-type:hover {
-    background-color: #e0a800;
+.tool-card button:last-child {
+    background: #ef4444;
+    color: white;
 }
 
-.tool-card button:last-of-type {
-    background-color: #dc3545;
-}
-
-.tool-card button:last-of-type:hover {
-    background-color: #c82333;
-}
-
-/* Optional: modal inner styling */
-.modal-body .admin-form {
-    padding: 0;
-    box-shadow: none;
-    background: none;
+.tool-card button:hover {
+    opacity: 0.9;
 }

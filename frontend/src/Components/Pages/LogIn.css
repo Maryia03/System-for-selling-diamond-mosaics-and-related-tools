@@ -1,23 +1,11 @@
 .login-container {
+    text-align: center;
     padding: 20px;
 }
 
-.image-header {
-    text-align: center;
-}
-
-.login-image {
-    width: 100%;
-    height: auto;
-}
-
-.divider {
-    border-top: 2px dashed #131313;
-    margin: 20px 0;
-}
-
 .form-container {
-    margin-top: 20px;
+    max-width: 400px;
+    margin: auto;
 }
 
 .form-group {
@@ -25,20 +13,17 @@
 }
 
 .form-control {
-    width: 100%;
     padding: 10px;
-    margin-top: 5px;
-}
-
-.btn-primary {
+    border-radius: 6px;
+    border: 1px solid #ddd;
     width: 100%;
-    padding: 10px;
-    background-color: #4e4e4e;
-    color: white;
-    border: none;
 }
 
 .error-message {
-    color: red;
     margin-top: 10px;
+    color: red;
+}
+
+.divider {
+    margin: 20px 0;
 }
