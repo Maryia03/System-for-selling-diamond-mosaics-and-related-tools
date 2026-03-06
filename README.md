@@ -13,10 +13,10 @@ The system allows users to view mosaics on the main page with filtering and sort
 ## ⚙️ Running the Project
 - Backend:
   - cd backend
-  ./mvnw spring-boot:run
+  - ./mvnw spring-boot:run
 - Frontend:
-  cd frontend
-  npm start
+  - cd frontend
+  - npm start
 - Docker:
-  docker compose up --build
+  - docker compose up --build
 
