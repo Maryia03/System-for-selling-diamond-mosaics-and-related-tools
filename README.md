@@ -10,7 +10,7 @@ The system allows users to view mosaics on the main page with filtering and sort
 - JWT authentication
 - Docker
 
-##⚙️ Running the Project
+## ⚙️ Running the Project
 -Backend:
   -cd backend
   ./mvnw spring-boot:run
