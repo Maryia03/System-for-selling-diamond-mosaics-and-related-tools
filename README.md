@@ -4,10 +4,10 @@ The system allows users to view mosaics on the main page with filtering and sort
 
 ## 🛠️ Technologies
 - Java 17
-- Spring Boot
+- Spring Boot, Spring Security, Spring Data JPA, Spring MVC
 - React
 - MySQL
-- JWT authentication
+- JWT
 - Docker
 
 ## 🧑‍💻 Features
